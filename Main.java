@@ -1,21 +1,24 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<Habito> habitos = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-        Habito beberAgua = new Habito("Beber Água", "💧");
-        Habito estudarJava = new Habito("Estudar Java", "📚");
+        System.out.println("Digite o nome do hábito:");
+        String nome = scanner.nextLine();
 
-        habitos.add(beberAgua);
-        habitos.add(estudarJava);
+        System.out.println("Digite o emoji para representar o hábito:");
+        String emoji = scanner.nextLine();
 
-        beberAgua.marcarComoFeito(LocalDate.now());
+        Habito novoHabito = new Habito(nome, emoji);
+        habitos.add(novoHabito);
 
-        for (Habito h : habitos) {
-            boolean feitoHoje = h.foiFeitoNoDia(LocalDate.now());
-            System.out.println(h.getEmoji () + " "+ h.getNome () + " - Feito hoje? " + feitoHoje);
-        }
+        System.out.println("Hábito Cadastrado: " + novoHabito.getEmoji() + " " + novoHabito.getNome());
+
+        scanner.close();
+       
     }
 }
