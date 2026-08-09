@@ -18,8 +18,8 @@ public class Main {
         while (true) {
             System.out.println ("\n--- Menu ---");
             System.out.println ("1. Cadastrar hábito");
-            System.out.println ("2. Listar hábitos");
-            System.out.println ("3. Marcar hábito como concluído");
+            System.out.println ("2. Marcar hábito como concluído");
+            System.out.println ("3. Lista de hábitos");
             System.out.println ("4. Sair");
             System.out.println ("Escolha uma opção: ");
             
@@ -59,7 +59,7 @@ public class Main {
                 } else {
                     System.out.println("=== Hábitos cadastrados ===");
                     for (Habito h : habitos) {
-                        System.out.println(h.getEmoji () + " " + h.getNome());
+                        System.out.println(h.getEmoji () + " " + h.getNome() +  " - Streak: " + h.calcularStreak() + " dias");
 
                     }
                 }

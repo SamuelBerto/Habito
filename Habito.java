@@ -21,6 +21,16 @@ public class Habito {
 
     public boolean foiFeitoNoDia(LocalDate data) {
         return historico.getOrDefault(data, false);
+
+    }
+    public int calcularStreak() {
+        int streak = 0;
+        LocalDate dataAtual = LocalDate.now() ;
+        while (foiFeitoNoDia(dataAtual)) {
+            streak++;
+            dataAtual = dataAtual.minusDays(1);
+        }
+        return streak;
     }
 
     public String getNome() {
