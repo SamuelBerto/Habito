@@ -21,8 +21,9 @@ public class Main {
             System.out.println ("2. Marcar hábito como concluído");
             System.out.println ("3. Lista de hábitos");
             System.out.println ("4. Sair");
+            System.out.println("5. Marcar hábito em data específica");
             System.out.println ("Escolha uma opção: ");
-            
+
             String opcao = scanner.nextLine();
 
             if (opcao.equals("1")) {
@@ -63,14 +64,41 @@ public class Main {
 
                     }
                 }
+            }else if (opcao.equals("5")) {
+          System.out.println("Digite o nome do hábito:");
+          String nomeParaMarcarData = scanner.nextLine ();
+          
+          Habito habitoEncontrado = null;
+          for (Habito h : habitos) {
+            if (normalizar (h.getNome()).equals(normalizar(nomeParaMarcarData))) {
+              habitoEncontrado = h;
+              break;
+            }
+          }
+           if (habitoEncontrado != null) {
+            System.out.println("Digite o dia (1-31):");
+            int dia = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Digite o mês (1-12):");
+            int mes = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Digite o ano (ex: 2026):");
+            int ano = Integer.parseInt(scanner.nextLine());
+
+            LocalDate dataEscolhida = LocalDate.of(ano, mes, dia);
+            habitoEncontrado.marcarComoFeito(dataEscolhida);
+
+            System.out.println(habitoEncontrado.getEmoji() + " " + habitoEncontrado.getNome() + " marcado como feito em " + dataEscolhida + "!");
+          } else {
+            System.out.println("Hábito não encontrado.");
+           }    
             } else if (opcao.equals("4")) {
                 System.out.println("Até mais!");
                 break;
             } else {
                 System.out.println("Opção inválida. Tente novamente.");
             }
-            
-            
+        
         }
 
         scanner.close();
