@@ -32,6 +32,16 @@ public class Habito {
         }
         return streak;
     }
+    public Map<LocalDate, Boolean> consultarPeriodo(LocalDate inicio, LocalDate fim) {
+        Map<LocalDate, Boolean> resultado = new HashMap<>();
+        LocalDate dataAtual = inicio;
+
+        while (!dataAtual.isAfter(fim)) {
+            resultado.put(dataAtual, foiFeitoNoDia(dataAtual));
+            dataAtual = dataAtual.plusDays(1);
+        }
+        return resultado;
+    }
 
     public String getNome() {
         return nome;
